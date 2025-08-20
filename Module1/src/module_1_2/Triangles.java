@@ -7,18 +7,20 @@ public class Triangles {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Give first leg length");
-        int firstSide =  Integer.parseInt(scanner.nextLine());
-        System.out.println("Give second leg length");
-        int secondSide = Integer.parseInt(scanner.nextLine());
+        System.out.println("Leg A length");
+        int legA =  Integer.parseInt(scanner.nextLine());
 
-        System.out.println(calculateHypotenuse(firstSide, secondSide));
+        System.out.println("Leg B length");
+        int legB = Integer.parseInt(scanner.nextLine());
 
-        scanner.close();
+        System.out.println("Hypotenuse length is: " + calculateHypotenuse(legA, legB));
     }
 
-    public static float calculateHypotenuse(int leg1, int leg2) {
-        int squaredResult = (int) (Math.pow(leg1, 2) + Math.pow(leg2, 2));
-        return (float) Math.sqrt(squaredResult);
+    public static double calculateHypotenuse(int legA, int legB) {
+        double squaredResult = Math.sqrt(
+                (Math.pow(legA, 2) + Math.pow(legB, 2))
+        );
+
+        return Math.round(squaredResult * 100.0) / 100.0;
     }
 }

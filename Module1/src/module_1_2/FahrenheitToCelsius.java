@@ -12,7 +12,9 @@ public class FahrenheitToCelsius {
         System.out.println("Temperature in Celsius: " + formula(temperature));
     }
 
-    public static float formula(int temperature) {
-        return (float)(temperature - 32) * 5 / 9;
+    public static double formula(int temperature) {
+        double convertedValue = (temperature - 32) * 5.0 / 9.0;
+
+        return Math.round(convertedValue * 10.0) / 10.0;
     }
 }
