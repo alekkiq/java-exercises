@@ -11,15 +11,21 @@ public class NameGenerator {
 
         System.out.println("How many names to generate?");
 
-        int namesToGenerate = scanner.nextInt();
-        String[] names = new String[namesToGenerate];
+        int namesToGenerate = Integer.parseInt(scanner.nextLine());
 
-        for (int i = 0; i <= names.length - 1; i++) {
-            String firstName = firstNames[(int)(Math.random() * 5)];
-            String lastName = lastNames[(int)(Math.random() * 5)];
-            names[i] = firstName + " " + lastName;
+        for (int i = 1; i <= namesToGenerate; i++) {
+            String firstName = getRandomItem(firstNames);
+            String lastName = getRandomItem(lastNames);
 
-            System.out.println(names[i]);
+            System.out.println(firstName + " " + lastName);
         }
+    }
+
+    public static String getRandomItem(String[] arr) {
+        if (arr.length == 0) return "";
+
+        int idx = (int) (Math.random() * arr.length);
+
+        return arr[idx];
     }
 }
