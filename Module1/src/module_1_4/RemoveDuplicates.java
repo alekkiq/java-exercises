@@ -18,8 +18,25 @@ public class RemoveDuplicates {
 
         int[] cleanedArr = new int[size];
 
+        int idx = 0;
         for (int item : arr) {
-            System.out.println(item);
+            boolean isDuplicate = false;
+
+            for (int j = 0; j < idx; j++) {
+                if (cleanedArr[j] == item) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                cleanedArr[idx] = item;
+                idx++;
+            }
+        }
+
+        System.out.println("Duplicates cleaned array");
+        for (int i = 0; i < idx; i++) {
+            System.out.println(cleanedArr[i]);
         }
     }
 }
