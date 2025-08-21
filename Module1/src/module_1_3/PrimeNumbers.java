@@ -14,18 +14,18 @@ public class PrimeNumbers {
 
         System.out.println("Prime numbers in " + start + "-" + end);
 
-        boolean isPrime;
+        boolean notPrime;
         for (int i = start; i <= end; i++) {
             if (i < 2) continue;
 
-            isPrime = true;
+            notPrime = false;
             for (int j = 2; j < i; j++) {
                 if (i % j == 0) {
-                    isPrime = false;
+                    notPrime = true;
                     break;
                 }
             }
-            if (isPrime) System.out.println(i);
+            if (!notPrime) System.out.println(i);
         }
     }
 }
