@@ -6,11 +6,11 @@ import java.util.Map;
 
 public class GroceryListManager {
     // private ArrayList<String> groceryList = new ArrayList<>();
-    private Map<String, Double> groceryList = new HashMap<>();
+    private Map<String, GroceryItem> groceryList = new HashMap<>();
 
-    void addItem(String item, Double cost) {
+    void addItem(String item, Double cost, String category) {
         if (!groceryList.containsKey(item)) {
-            groceryList.put(item, cost);
+            groceryList.put(item, new GroceryItem(cost, category));
         }
     }
 
@@ -24,16 +24,24 @@ public class GroceryListManager {
 
     void displayList() {
         int idx = 1; // easier to read indexing
-        for (Map.Entry<String, Double> item : groceryList.entrySet()) {
-            System.out.println(idx + ". " + item.getKey() + ": " + item.getValue());
+        for (Map.Entry<String, GroceryItem> item : groceryList.entrySet()) {
+            System.out.println(idx + ". " + item.getKey() + ": " + item.getValue().getCost());
             idx++;
+        }
+    }
+
+    void displayByCategory(String category) {
+        for (Map.Entry<String, GroceryItem> item : groceryList.entrySet()) {
+            if (item.getValue().getCategory().equals(category)) {
+                System.out.println(item.getKey());
+            }
         }
     }
 
     double calculateTotalCost() {
         double total = 0.0;
-        for (Map.Entry<String, Double> item : groceryList.entrySet()) {
-            total += item.getValue();
+        for (Map.Entry<String, GroceryItem> item : groceryList.entrySet()) {
+            total += item.getValue().getCost();
         }
         return total;
     }
@@ -41,14 +49,16 @@ public class GroceryListManager {
     public static void main(String[] args) {
         GroceryListManager groceryList = new GroceryListManager();
 
-        groceryList.addItem("Apples", 5.99);
-        groceryList.addItem("Milk", 1.95);
-        groceryList.addItem("Bread", 3.00);
+        groceryList.addItem("Apples", 5.99, "Fruits");
+        groceryList.addItem("Milk", 1.95, "Dairy");
+        groceryList.addItem("Bread", 3.00, "Bakery");
 
         System.out.println("Grocery List:");
         groceryList.displayList();
 
         System.out.printf("\nTotal Cost: %.2f", groceryList.calculateTotalCost());
+        System.out.println("\nAll groceries in the category Fruits");
+        groceryList.displayByCategory("Fruits");
 
         System.out.println("\nIs Milk in the grocery list? " + groceryList.checkItem("Milk"));
 
