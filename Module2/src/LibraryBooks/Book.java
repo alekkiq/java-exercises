@@ -1,9 +1,13 @@
 package LibraryBooks;
 
+import java.util.ArrayList;
+
 public class Book {
     private String title;
     private String author;
     private int publishYear;
+    private double rating;
+    private ArrayList<String> reviews = new ArrayList<>();
 
     public Book(String title, String author, int publishYear) {
         this.title = title;
@@ -39,5 +43,21 @@ public class Book {
 
     public void setPublishYear(int year) {
         this.publishYear = year;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public void addReview(String review) {
+        this.reviews.add(review);
+    }
+
+    public int getReviewCount() {
+        return this.reviews.size();
     }
 }
