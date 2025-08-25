@@ -13,12 +13,22 @@ public class Book {
         this.title = title;
         this.author = author;
         this.publishYear = publishYear;
+        this.rating = 0.0;
+    }
+
+    public Book(String title, String author, int publishYear, double rating) {
+        this.title = title;
+        this.author = author;
+        this.publishYear = publishYear;
+        this.rating = rating;
     }
 
     public String getAllInfo() {
         return "Title: \"" + this.getTitle() +
                 "\", Author: \"" + this.getAuthor() +
-                "\", Year: " + this.getPublishYear();
+                "\", Year: " + this.getPublishYear() +
+                ", Rating: " + this.getRating() +
+                ", Total reviews: " + this.getReviewCount();
     }
 
     public String getTitle() {

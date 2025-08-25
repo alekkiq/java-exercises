@@ -7,30 +7,45 @@ public class Library {
     private ArrayList<User> users = new ArrayList<>();
 
     public void addBook(Book book) {
-        this.books.add(book);
+        if (!this.books.contains(book))
+            this.books.add(book);
+    }
+
+    public Book getBookByTitle(String title) {
+        for (Book book : this.books)
+            if (book.getTitle().equals(title)) return book;
+        return null;
+    }
+
+    public void addUser(User user) {
+        if (!this.users.contains(user))
+            this.users.add(user);
     }
 
     public void displayBooks() {
+        System.out.println("Library catalog:");
         int idx = 1;
         for (Book book : this.books) {
-            System.out.println(idx + ". " + book.getAllInfo());
+            System.out.println(" " + idx + ". " + book.getAllInfo());
             idx++;
         }
     }
 
     public void findBooksByAuthor(String author) {
         for (Book book : this.books) {
-            if (book.getAuthor().equals(author)) {
+            if (book.getAuthor().equals(author))
                 System.out.println(book.getAllInfo());
-            }
         }
     }
 
     public void borrowBook(User user, String title) {
-        this.books.removeIf(book -> book.getTitle().equals(title));
+        Book book = getBookByTitle(title);
+        user.addBorrowedBook(book);
+        this.books.remove(book);
     }
 
     public void returnBook(User user, Book book) {
+        user.removeBorrowedBook(book);
         this.addBook(book);
     }
 
@@ -40,34 +55,17 @@ public class Library {
 
     public double getAverageBookRating() {
         double ratingSum = 0.0;
-        for (Book book : this.books) {
+        for (Book book : this.books)
             ratingSum += book.getRating();
-        }
         return (ratingSum / this.books.size());
     }
 
     public Book getMostReviewedBook() {
         Book mostReviewed = this.books.get(0);
-
         for (Book book : this.books) {
             if (book.getReviewCount() > mostReviewed.getReviewCount())
                 mostReviewed = book;
         }
-
         return mostReviewed;
-    }
-
-    public static void main(String[] args) {
-        Library books = new Library();
-
-        books.addBook(new Book("Introduction to Java Programming", "John Smith", 2020));
-        books.addBook(new Book("Data Structures and Algorithms", "Jane Doe", 2018));
-        books.addBook(new Book("The Art of Fiction", "Alice Johnson", 2019));
-
-        System.out.println("Library catalog:");
-        books.displayBooks();
-
-        System.out.println("\nBooks by author \"Jane Doe\"");
-        books.findBooksByAuthor("Jane Doe");
     }
 }

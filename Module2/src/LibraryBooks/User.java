@@ -22,4 +22,12 @@ public class User {
 
         return books;
     }
+
+    public void addBorrowedBook(Book book) {
+        this.borrowedBooks.add(book);
+    }
+
+    public void removeBorrowedBook(Book book) {
+        this.borrowedBooks.remove(book);
+    }
 }
