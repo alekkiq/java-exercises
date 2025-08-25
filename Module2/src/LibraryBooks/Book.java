@@ -11,6 +11,12 @@ public class Book {
         this.publishYear = publishYear;
     }
 
+    public String getAllInfo() {
+        return "Title: \"" + this.getTitle() +
+                "\", Author: \"" + this.getAuthor() +
+                "\", Year: " + this.getPublishYear();
+    }
+
     public String getTitle() {
         return this.title;
     }
