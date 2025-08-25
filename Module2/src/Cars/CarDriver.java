@@ -13,12 +13,13 @@ public class CarDriver {
         System.out.println("Set a target speed:");
         int targetSpeed = scanner.nextInt();
 
-        for (int i = 0; i < (targetSpeed / 10); i++) {
+        while (myCar.getSpeed() < targetSpeed) {
             myCar.accelerate();
             System.out.println(myCar.getTypeName() + ": speed is " + myCar.getSpeed() + " km/h");
         }
 
-        // myCar.cruiseControlOnOff();
+        System.out.println("Turning on cruise control...");
+        myCar.cruiseControlOnOff();
 
         while (myCar.getSpeed() > 0) {
             myCar.decelerate(15);

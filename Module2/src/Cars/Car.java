@@ -5,8 +5,8 @@ public class Car {
     private double gasolineLevel;
     private String typeName;
     private double tankCapacity;
-    boolean cruiseControlOn;
-    double targetSpeed;
+    private boolean cruiseControlOn;
+    private double targetSpeed;
     double minCruiseSpeed;
     double maxCruiseSpeed;
 
@@ -22,38 +22,38 @@ public class Car {
     }
 
     public void accelerate() {
-        if (gasolineLevel > 0)
-            speed += 10;
+        if (this.gasolineLevel > 0)
+            this.speed += 10;
         else
-            speed = 0;
+            this.speed = 0;
     }
     void decelerate(int amount) {
-        if (gasolineLevel > 0) {
+        if (this.gasolineLevel > 0) {
             if (amount > 0)
-                speed = Math.max(0, speed - amount);
+                this.speed = Math.max(0, this.speed - amount);
         } else
-            speed = 0;
+            this.speed = 0;
     }
     double getSpeed() {
-        return speed;
+        return this.speed;
     }
     void setTargetSpeed(double targetSpeed) {
         this.targetSpeed = targetSpeed;
     }
     double getTargetSpeed() {
-        return targetSpeed;
+        return this.targetSpeed;
     }
     boolean cruiseControlOnOff() {
         this.cruiseControlOn = !this.cruiseControlOn;
         return this.cruiseControlOn;
     }
     String getTypeName() {
-        return typeName;
+        return this.typeName;
     }
     void fillTank() {
-        gasolineLevel = 100;
+        this.gasolineLevel = 100;
     }
     double getGasolineLevel() {
-        return gasolineLevel;
+        return this.gasolineLevel;
     }
 }
