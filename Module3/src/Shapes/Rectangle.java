@@ -4,7 +4,8 @@ public class Rectangle extends Shape {
     private int width;
     private int height;
 
-    public Rectangle(int width, int height) {
+    public Rectangle(int width, int height, String color) {
+        super(color);
         this.width = width;
         this.height = height;
     }
@@ -16,6 +17,6 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "Rectangle with width " + this.width + " and height " + this.height;
+        return "Rectangle (" + this.color + ") with width " + this.width + " and height " + this.height;
     }
 }

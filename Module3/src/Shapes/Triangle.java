@@ -4,7 +4,8 @@ public class Triangle extends Shape {
     private int base;
     private int height;
 
-    public Triangle(int base, int height) {
+    public Triangle(int base, int height, String color) {
+        super(color);
         this.base = base;
         this.height = height;
     }
@@ -16,6 +17,6 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return "Rectangle with base " + this.base + " and height " + this.height;
+        return "Rectangle (" + this.color + ") with base " + this.base + " and height " + this.height;
     }
 }

@@ -3,7 +3,8 @@ package Shapes;
 public class Circle extends Shape {
     private int radius;
 
-    public Circle(int radius) {
+    public Circle(int radius, String color) {
+        super(color);
         this.radius = radius;
     }
 
@@ -14,6 +15,6 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        return "Circle with radius " + this.radius;
+        return "Circle (" + this.color + ") with radius " + this.radius;
     }
 }
