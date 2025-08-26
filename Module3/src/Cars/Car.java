@@ -22,8 +22,10 @@ public class Car {
     }
 
     public void accelerate() {
-        if (this.gasolineLevel > 0)
+        if (this.gasolineLevel > 0) {
             this.speed += 10;
+            this.consumeGasoline();
+        }
         else
             this.speed = 0;
     }
@@ -52,6 +54,9 @@ public class Car {
     }
     void fillTank() {
         this.gasolineLevel = 100;
+    }
+    void consumeGasoline() {
+        this.gasolineLevel -= 5;
     }
     double getGasolineLevel() {
         return this.gasolineLevel;
