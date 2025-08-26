@@ -1,24 +1,26 @@
 package Cars;
 
 public class Car {
-    private double speed;
+    private int speed;
     private double gasolineLevel;
     private String typeName;
     private double tankCapacity;
     private boolean cruiseControlOn;
-    private double targetSpeed;
-    double minCruiseSpeed;
-    double maxCruiseSpeed;
+    private int targetSpeed;
+    private int minCruiseSpeed;
+    private int maxCruiseSpeed;
 
-    public Car(String typeName, int tankCapacity, int speed) {
+    public Car(String typeName, int tankCapacity, int speed, int minCruiseSpeed, int maxCruiseSpeed) {
         this.typeName = typeName;
         this.tankCapacity = tankCapacity;
         this.speed = speed;
+        this.minCruiseSpeed = minCruiseSpeed;
+        this.maxCruiseSpeed = maxCruiseSpeed;
         this.gasolineLevel = 0;
     }
 
     public Car(String typeName) {
-        this(typeName, 200, 0);
+        this(typeName, 200, 0, 80, 120);
     }
 
     public void accelerate() {
@@ -34,17 +36,21 @@ public class Car {
         } else
             this.speed = 0;
     }
-    double getSpeed() {
+    int getSpeed() {
         return this.speed;
     }
-    void setTargetSpeed(double targetSpeed) {
+    void setTargetSpeed(int targetSpeed) {
         this.targetSpeed = targetSpeed;
     }
-    double getTargetSpeed() {
+    int getTargetSpeed() {
         return this.targetSpeed;
     }
     boolean cruiseControlOnOff() {
-        this.cruiseControlOn = !this.cruiseControlOn;
+        if (this.speed < this.targetSpeed)
+            this.cruiseControlOn = false;
+        else
+            this.cruiseControlOn = !this.cruiseControlOn;
+
         return this.cruiseControlOn;
     }
     String getTypeName() {

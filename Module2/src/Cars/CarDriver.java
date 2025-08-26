@@ -13,7 +13,7 @@ public class CarDriver {
         System.out.println("Set a target speed:");
         int targetSpeed = scanner.nextInt();
 
-        while (myCar.getSpeed() < targetSpeed) {
+        for (int i = 0; i < 6; i++) {
             myCar.accelerate();
             System.out.println(myCar.getTypeName() + ": speed is " + myCar.getSpeed() + " km/h");
         }
