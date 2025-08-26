@@ -1,5 +1,6 @@
 package Cars;
 
+// 3.1: Task 1
 public class SportsCar extends Car {
     public SportsCar(String typeName, int tankCapacity, int speed) {
         super(typeName, tankCapacity, speed);
@@ -18,7 +19,6 @@ public class SportsCar extends Car {
         if (this.gasolineLevel > 0) {
             if (amount > 0) {
                 this.speed = Math.max(0, this.speed - (amount * 1.5));
-                this.consumeGasoline();
             }
             else
                 this.speed = 0;
@@ -27,6 +27,7 @@ public class SportsCar extends Car {
 
     @Override
     void consumeGasoline() {
+        // this.gasolineLevel -= 5 // default
         this.gasolineLevel -= 10;
     }
 }

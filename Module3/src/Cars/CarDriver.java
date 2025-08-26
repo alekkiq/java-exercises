@@ -2,6 +2,7 @@ package Cars;
 
 import java.util.Scanner;
 
+// 3.1: Tasks 1 & 2
 public class CarDriver {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
