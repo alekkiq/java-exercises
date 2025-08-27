@@ -66,7 +66,7 @@ public class GroceryListManager {
         GroceryListManager groceryList = new GroceryListManager();
 
         groceryList.addItem("Apples", 5.99, "Fruits", 10);
-        groceryList.addItem("Milk", 1.95, "Dairy", 0);
+        groceryList.addItem("Milk", 1.95, "Dairy", 2);
         groceryList.addItem("Bread", 3.00, "Bakery", 5);
 
         System.out.println("\nGrocery List:");
