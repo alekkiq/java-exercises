@@ -11,7 +11,12 @@ public class Television {
     }
 
     void setChannel(int newChannel) {
-        if (tvOn) channel = newChannel;
+        if (tvOn) {
+            if (newChannel > 10)
+                this.channel = 1;
+            else
+                this.channel = newChannel;
+        }
     }
 
     int getChannel() {
