@@ -1,22 +1,23 @@
 package Vehicles;
 
-public class Car implements Vehicle {
-    @Override
-    public void start() {
-        System.out.println("Car is starting...");
+public class Car extends AbstractVehicle {
+    private String color;
+
+    public Car(String type, String fuelType, String color) {
+        super(type, fuelType);
+        this.color = color;
     }
 
-    @Override
-    public void stop() {
-        System.out.println("Car is stopping...");
+    public String getColor() {
+        return this.color;
     }
 
     @Override
     public String getInfo() {
         return
-            "Car Information:\n" +
-            "Type: Car\n" +
-            "Fuel: Petrol\n" +
-            "Color: Red";
+            this.getType() + " Information:" +
+            "\nType: " + this.getType() +
+            "\nFuel: " + this.getFuelType() +
+            "\nColor: " + this.getColor();
     }
 }

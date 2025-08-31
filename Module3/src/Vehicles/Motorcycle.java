@@ -1,22 +1,23 @@
 package Vehicles;
 
-public class Motorcycle implements Vehicle {
-    @Override
-    public void start() {
-        System.out.println("Motorcycle is starting...");
+public class Motorcycle extends AbstractVehicle {
+    private String color;
+
+    public Motorcycle(String type, String fuelType, String color) {
+        super(type, fuelType);
+        this.color = color;
     }
 
-    @Override
-    public void stop() {
-        System.out.println("Motorcycle is stopping...");
+    public String getColor() {
+        return this.color;
     }
 
     @Override
     public String getInfo() {
         return
-            "Motorcycle Information:\n" +
-            "Type: Motorcycle\n" +
-            "Fuel: Gasoline\n" +
-            "Color: Black";
+            this.getType() + " Information:" +
+            "\nType: " + this.getType() +
+            "\nFuel: " + this.getFuelType() +
+            "\nColor: " + this.getColor();
     }
 }
