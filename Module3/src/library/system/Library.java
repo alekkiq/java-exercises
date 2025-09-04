@@ -45,7 +45,8 @@ public class Library {
     public void listBooks() {
         System.out.println("Available Library Books:");
         for (Book book : this.books) {
-            System.out.println(" " + book.getTitle() + " by " + book.getAuthor());
+            if (!book.isReserved())
+                System.out.println(" " + book.getTitle() + " by " + book.getAuthor());
         }
     }
 
@@ -60,6 +61,33 @@ public class Library {
         if (this.members.contains(member) && member.getBorrowedBooks().contains(book)) {
             member.getBorrowedBooks().remove(book);
             this.books.add(book);
+        }
+    }
+
+    public void reserveBook(LibraryMember member, Book book) {
+        if (!book.isReserved()) {
+            book.setReserved(true);
+            member.addReservedBook(book);
+            System.out.println("Book reserved successfully");
+        } else {
+            System.out.println("Book is already reserved");
+        }
+    }
+
+    public void cancelReservation(LibraryMember member, Book book) {
+        if (book.isReserved() && member.getReservedBooks().contains(book)) {
+            book.setReserved(false);
+            member.getReservedBooks().remove(book);
+            System.out.println("Reservation cancelled successfully");
+        } else {
+            System.out.println("Book was not reserved by this member");
+        }
+    }
+
+    public void displayReservedBooks(LibraryMember member) {
+        System.out.println("Reserved books for member " + member.getName() + ":");
+        for (Book book : member.getReservedBooks()) {
+            System.out.println(" " + book.getTitle() + " by " + book.getAuthor());
         }
     }
 }

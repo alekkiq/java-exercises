@@ -24,7 +24,6 @@ public class Main {
 
         Library library = new Library(books, members);
 
-        // test library methods
         // addBook()
         library.addBook(new Book("Git basics", "Linus Torvalds", "6677889900"));
 
@@ -33,21 +32,41 @@ public class Main {
         library.addMember(newMember);
 
         // getBook()
-        System.out.println("Retriewing book '1984'...");
+        System.out.println();
+        System.out.println("Retrieving book '1984'...");
         Book testBook = library.getBook("1984");
 
         // borrowBook()
+        System.out.println();
         System.out.println("Borrowing book '1984' for member: " + newMember.getName());
         library.borrowBook(newMember, testBook);
 
         // returnBook()
+        System.out.println();
         System.out.println("Returning book '1984' from member: " + newMember.getName());
         library.returnBook(newMember, testBook);
 
         // listMembers()
+        System.out.println();
         library.listMembers();
 
         // listBooks()
+        System.out.println();
         library.listBooks();
+
+        // reserveBook()
+        System.out.println();
+        System.out.println("Reserving book 'Git basics' for member: " + newMember.getName());
+        library.reserveBook(newMember, library.getBook("Git basics"));
+
+        // displayReservedBooks()
+        System.out.println();
+        System.out.println("Displaying reserved books for member: " + newMember.getName());
+        library.displayReservedBooks(newMember);
+
+        // cancelReservation()
+        System.out.println();
+        System.out.println("Cancelling reservation of book 'Git basics' for member: " + newMember.getName());
+        library.cancelReservation(newMember, library.getBook("Git basics"));
     }
 }

@@ -9,6 +9,7 @@ public class LibraryMember {
     private String name;
     private int memberId;
     private List<Book> borrowedBooks = new ArrayList<>();
+    private List<Book> reservedBooks = new ArrayList<>();
 
     public LibraryMember(String name) {
         this.memberId = ++memberCount;
@@ -28,6 +29,10 @@ public class LibraryMember {
         return this.borrowedBooks;
     }
 
+    public List<Book> getReservedBooks() {
+        return this.reservedBooks;
+    }
+
     // Setters
     public void setName(String name) {
         this.name = name;
@@ -35,5 +40,13 @@ public class LibraryMember {
 
     public void setMemberId(int memberId) {
         this.memberId = memberId;
+    }
+
+    public void addReservedBook(Book book) {
+        this.reservedBooks.add(book);
+    }
+
+    public void removeReservedBook(Book book) {
+        this.reservedBooks.remove(book);
     }
 }
