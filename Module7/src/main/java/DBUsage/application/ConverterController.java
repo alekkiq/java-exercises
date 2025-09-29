@@ -3,6 +3,7 @@ package DBUsage.application;
 import DBUsage.dao.CurrencyDao;
 import DBUsage.entity.Currency;
 import DBUsage.view.ConverterView;
+import ORMUsage.dao.TransactionDao;
 
 import java.util.List;
 

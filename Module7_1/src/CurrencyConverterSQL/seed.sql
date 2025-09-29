@@ -4,7 +4,7 @@ USE currency_converter;
 
 DROP USER IF EXISTS 'appuser'@'localhost';
 CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'apppassword';
-GRANT SELECT, INSERT ON currency_converter.* TO 'appuser'@'localhost';
+GRANT SELECT, INSERT, DELETE, DROP, CREATE ON currency_converter.* TO 'appuser'@'localhost';
 FLUSH PRIVILEGES;
 
 CREATE TABLE currency (

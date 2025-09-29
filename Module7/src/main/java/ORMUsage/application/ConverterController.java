@@ -1,7 +1,9 @@
 package ORMUsage.application;
 
 import ORMUsage.dao.CurrencyDao;
+import ORMUsage.dao.TransactionDao;
 import ORMUsage.entity.Currency;
+import ORMUsage.entity.Transaction;
 import ORMUsage.service.CurrencyRateService;
 import ORMUsage.view.ConverterView;
 import ORMUsage.datasource.MariaDbConnection;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class ConverterController {
     private CurrencyDao dao = new CurrencyDao();
+    private TransactionDao tDao = new TransactionDao();
     private CurrencyRateService rateService = new CurrencyRateService(dao);
     private ConverterView view;
 
@@ -43,6 +46,10 @@ public class ConverterController {
         // conversion
         double eur = amount * fromRate;
         double result = toRate == 0 ? 0.0 : eur / toRate;
+
+        // save "transaction" to db
+        this.tDao.persist(new Transaction(amount, from, to));
+        System.out.println(this.tDao.find(1));
 
         this.view.showResult(result);
     }
