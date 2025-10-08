@@ -51,4 +51,12 @@ public class ShoppingCartTest {
 
         assertEquals(2.25, cart.calculateTotal(), 0.01);
     }
+
+    @Test
+    public void testCalculateTotalEC() {
+        ShoppingCart cart = new ShoppingCart();
+
+        // edge cases
+        assertEquals(0.0, cart.calculateTotal(), 0.01);
+    }
 }
