@@ -7,24 +7,18 @@ public class MariaDbConnection {
     private static EntityManager em = null;
 
     public static synchronized EntityManager getInstance() {
-        if (em == null) {
-            if (emf == null) {
-                emf = Persistence.createEntityManagerFactory("CurrencyMariaDbUnit");
+        try {
+            if (em == null) {
+                if (emf == null) {
+                    emf = Persistence.createEntityManagerFactory("CurrencyMariaDbUnit");
+                }
+                em = emf.createEntityManager();
             }
-            em = emf.createEntityManager();
+        } catch (Exception e) { // connection failed -> set both as null
+            em = null;
+            emf = null;
         }
 
         return em;
-    }
-
-    public static boolean testConnection() {
-        try {
-            EntityManager em = getInstance();
-            em.createNativeQuery("SELECT 1").getSingleResult();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 }
